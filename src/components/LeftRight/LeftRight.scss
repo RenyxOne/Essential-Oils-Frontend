@@ -1,0 +1,12 @@
+@import "../../brandbook/variables";
+
+.left-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: $main-color;
+  padding: 10px;
+  margin: 0;
+  border-radius: 10px;
+}

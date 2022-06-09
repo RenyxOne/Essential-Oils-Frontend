@@ -1,0 +1,36 @@
+@import "../../brandbook/variables";
+
+.item-card {
+  width: 320px;
+  cursor: pointer;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: $second-color;
+  &__title {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 90%;
+    line-height: 100%;
+    color: $title-font-color;
+    mix-blend-mode: normal;
+    opacity: 0.7;
+  }
+  &__image {
+    height: 480px;
+    overflow: hidden;
+    width: 100%;
+    transition-duration: 0.25s;
+
+    &:hover{
+      transform: scale(110%);
+      transition-duration: 0.25s;
+    }
+  }
+
+  &__title-container {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

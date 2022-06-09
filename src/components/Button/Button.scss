@@ -1,0 +1,19 @@
+@import "../../brandbook/variables";
+
+.btn {
+  background-color: $active-bg-color;
+  color: $active-font-color;
+  border-radius: 30px;
+  border: 3px solid $active-bg-color;
+  width: 100%;
+  min-height: 50px;
+  font-weight: 700;
+  font-size: 1em;
+  padding: 10px;
+  cursor: pointer;
+
+  &__content-wrapper{
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
