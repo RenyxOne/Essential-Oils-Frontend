@@ -1,0 +1,24 @@
+@import "../../brandbook/variables";
+
+.item {
+  width: 100%;
+  padding: 10px;
+  &__container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: $second-color;
+    border-radius: 15px;
+  }
+  &__image {
+    max-height: 480px;
+  }
+  &__column {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+  }
+  &__name {
+    color: $font-color;
+  }
+}

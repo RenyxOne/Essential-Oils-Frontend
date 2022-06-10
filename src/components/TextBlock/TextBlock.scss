@@ -1,0 +1,21 @@
+@import "../../brandbook/variables";
+
+.text-block {
+  color: $font-color;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 10px;
+
+  &__title {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__text {
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+  }
+}
