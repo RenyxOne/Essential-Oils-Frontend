@@ -1,0 +1,19 @@
+.card-area {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 100%;
+  &__item{
+    width: 20%;
+    padding: 10px;
+    @media (max-width: 1279px) {
+      width: 25%;
+    }
+    @media (max-width: 1079px) {
+      width: 33%;
+    }
+    @media (max-width: 767px) {
+      width: 50%;
+    }
+  }
+}

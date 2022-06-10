@@ -1,7 +1,12 @@
 @import "./brandbook/variables";
 
-.App {
+.wrapper {
+  min-height: 100vh;
   text-align: center;
+  background-color: $main-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .App-logo {
@@ -17,7 +22,6 @@
 
 .App-header {
   background-color: $main-color;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,15 +41,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-.bt{
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
 }

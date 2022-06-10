@@ -1,14 +1,28 @@
 import React from 'react';
 import './App.scss';
 import {ItemCard} from "./components/ItemCard/ItemCard";
+import {CardArea} from "./components/CardArea/CardArea";
+import {LeftRight} from "./components/LeftRight/LeftRight";
+import {SearchForm} from "./components/SearchForm/SearchForm";
+import {Header} from "./components/Header/Header";
+import {MainPage} from "./pages/MainPage/MainPage";
+
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <ItemCard image="https://www.doterra.com/medias/2x3-5ml-arbovitae.png?context=bWFzdGVyfHJvb3R8Mzg2MTN8aW1hZ2UvcG5nfGgzYy9oMTQvMjc5OTAzOTMxMjY5NDIucG5nfGZlZjI5ZTU1NjA5NjJlODg1ODg0OGRiNGI1Zjk3ZDRiZjYzMjY4YTc3NTUwNDlkYWNhYjczM2I5YWEyYWQzODM"
-                  title="Arborvitae Oil"/>
-      </header>
+    <div className="wrapper">
+      {/*<Header/>*/}
+      {/*<main>*/}
+
+      {/*  <CardArea>*/}
+      {/*    {*/}
+      {/*      arr.map((item, index) => <ItemCard image={item.image} title={item.title} key={index}/>)*/}
+      {/*    }*/}
+      {/*  </CardArea>*/}
+      {/*</main>*/}
+      <MainPage/>
     </div>
   );
 }

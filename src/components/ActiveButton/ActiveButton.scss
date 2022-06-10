@@ -1,0 +1,18 @@
+@import "../../brandbook/variables";
+
+.active-button {
+  background-color: $inactive-bg-color;
+  color: $inactive-font-color;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: bold;
+  border: 0 none;
+  padding: 5px 20px;
+  cursor: pointer;
+  margin-left: 15px;
+
+  &--active {
+    background-color: $active-bg-color;
+    color: $active-font-color;
+  }
+}
