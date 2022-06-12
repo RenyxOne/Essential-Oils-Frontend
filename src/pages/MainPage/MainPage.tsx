@@ -1,28 +1,42 @@
-import React, {FC} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {Header} from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
 import {CardArea} from "../../components/CardArea/CardArea";
 import {ItemCard} from "../../components/ItemCard/ItemCard";
+import {Link, useParams} from "react-router-dom";
+import {fetchCards} from "../../services/fetchCards";
+import {Load} from "../../components/Load/Load";
 
-const arr:Array<{image:string, title:string}> = [];
-for (let i = 0; i < 10; i++) {
-  arr.push({
-    image: i%2 ? "https://www.doterra.com/medias/2x3-5ml-arbovitae.png?context=bWFzdGVyfHJvb3R8Mzg2MTN8aW1hZ2UvcG5nfGgzYy9oMTQvMjc5OTAzOTMxMjY5NDIucG5nfGZlZjI5ZTU1NjA5NjJlODg1ODg0OGRiNGI1Zjk3ZDRiZjYzMjY4YTc3NTUwNDlkYWNhYjczM2I5YWEyYWQzODM"
-      : "https://www.doterra.com/medias/2x3-10ml-frankincense.png?context=bWFzdGVyfHJvb3R8MzM0OTV8aW1hZ2UvcG5nfGg4My9oMjEvMjc5OTAzOTY3MzE0MjIucG5nfGM4NDhmYjU5OGI2ZjUwNTZmY2E0NDdkNmFmYjFiOGRkNzU3ZjkzMWVmZWE3Yjk3M2NiYjdmODRkYzNmZWUzN2E",
-    title: i % 2 ? "Arborvitae Oil" : "Frankincense Touch"
-  })
+const loadCards = async (value: string, mode: string, setLoad: React.Dispatch<any>, setData: React.Dispatch<any>) => {
+  setLoad(true);
+  const item = await fetchCards(value, mode);
+  setData(item);
+  setLoad(false);
 }
-arr[4].image = "sdasda";
 
 export const MainPage:FC = () => {
+  const params = useParams();
+  console.log(params);
+  const [load, setLoad] = useState(false);
+  const [data, setData] = useState([] as Array<{image: string, title: string}>);
+
+  useEffect(() => {
+    if (params.value && params.mode)
+      loadCards(params.value, params.mode, setLoad, setData);
+    else
+      loadCards('', '', setLoad, setData);
+  }, [params]);
+
+
   return <>
     <Header/>
     <main>
+      {load ? <Load/> :
         <CardArea>
           {
-            arr.map((item, index) => <ItemCard image={item.image} title={item.title} key={index}/>)
+            data.map((item, index) => <Link to={`/item/${index}`}><ItemCard image={item.image} title={item.title} /></Link>)
           }
-        </CardArea>
+        </CardArea>}
     </main>
     <Footer/>
   </>

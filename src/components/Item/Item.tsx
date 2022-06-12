@@ -25,7 +25,7 @@ export const Item:FC<ItemProps> = ({img, name, aroma, description, usage, benefi
       </div>
       <div className="item__column">
         <h2 className="item__name">
-          name
+          {name}
         </h2>
         <TextBlock title="Аромат">
           {aroma}
