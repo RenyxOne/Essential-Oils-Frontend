@@ -10,7 +10,7 @@
   flex-direction: column;
 
   &__input {
-    font-family: 'Montserrat', sans-serif;
+    font-family: inherit;
     width: 100%;
     min-width: 400px;
     height: 56px;
@@ -18,9 +18,10 @@
     padding: 0px 10px;
     outline:none;
     border: none;
-    border-bottom-style: solid;
+    border-radius: 15px;
   }
   &__button{
+    font-family: inherit;
     background-color: $active-bg-color;
     color: $active-font-color;
     width: 178px;
@@ -28,7 +29,7 @@
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
-    border-radius: 5px;
+    border-radius: 20px;
   }
   &__additions {
     display: flex;

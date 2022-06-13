@@ -1,6 +1,8 @@
 @import "../../brandbook/variables";
 
 .active-button {
+  border-radius: 15px;
+  font-family: inherit;
   background-color: $inactive-bg-color;
   color: $inactive-font-color;
   text-transform: uppercase;

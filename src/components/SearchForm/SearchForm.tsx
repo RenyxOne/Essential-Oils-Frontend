@@ -1,15 +1,25 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import "./SearchForm.scss"
 import {ActiveButton} from "../ActiveButton/ActiveButton";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 type SeachFormProps = {}
 
 export const SearchForm: FC<SeachFormProps> = ({}) => {
   const [val,setVal] = useState('');
   const [mode, setMode] = useState('name');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (val.length)
+      navigate(`/search/${val}/${mode}`);
+  },[val, mode])
 
   const handleValChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    if (e.target.value === ""){
+      setVal("empty");
+      return;
+    }
     setVal(e.target.value);
   }
 
@@ -23,6 +33,8 @@ export const SearchForm: FC<SeachFormProps> = ({}) => {
           placeholder="Your search input"
           className="search-form__input"
           onChange={handleValChange}
+          maxLength={50}
+          autoFocus={true}
         />
         <div className="search-form__additions">
           <div className="search-form__search-by">
@@ -34,6 +46,7 @@ export const SearchForm: FC<SeachFormProps> = ({}) => {
             <button
               type="button"
               className="search-form__button"
+              disabled={val === ""}
             >
               Search
             </button>

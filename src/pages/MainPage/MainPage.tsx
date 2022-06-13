@@ -6,6 +6,7 @@ import {ItemCard} from "../../components/ItemCard/ItemCard";
 import {Link, useParams} from "react-router-dom";
 import {fetchCards} from "../../services/fetchCards";
 import {Load} from "../../components/Load/Load";
+import {NoMatches} from "../../components/NoMatches/NoMatches";
 
 const loadCards = async (value: string, mode: string, setLoad: React.Dispatch<any>, setData: React.Dispatch<any>) => {
   setLoad(true);
@@ -16,27 +17,30 @@ const loadCards = async (value: string, mode: string, setLoad: React.Dispatch<an
 
 export const MainPage:FC = () => {
   const params = useParams();
-  console.log(params);
   const [load, setLoad] = useState(false);
-  const [data, setData] = useState([] as Array<{image: string, title: string}>);
+  const [arr, setArr] = useState([] as Array<{id:number, image: string, title: string}>);
 
   useEffect(() => {
     if (params.value && params.mode)
-      loadCards(params.value, params.mode, setLoad, setData);
+      loadCards(params.value, params.mode, setLoad, setArr);
     else
-      loadCards('', '', setLoad, setData);
+      loadCards('', '', setLoad, setArr);
   }, [params]);
-
 
   return <>
     <Header/>
     <main>
       {load ? <Load/> :
-        <CardArea>
-          {
-            data.map((item, index) => <Link to={`/item/${index}`}><ItemCard image={item.image} title={item.title} /></Link>)
-          }
-        </CardArea>}
+        (arr.length > 0 ? (
+              <CardArea>
+              {
+                arr.map((item, index) => <Link to={`/item/${item.id}`} key={index}><ItemCard image={item.image} title={item.title} /></Link>)
+              }
+              </CardArea>
+            ) :
+            <NoMatches></NoMatches>
+        )
+      }
     </main>
     <Footer/>
   </>

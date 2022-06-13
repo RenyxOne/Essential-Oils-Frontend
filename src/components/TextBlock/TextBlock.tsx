@@ -16,9 +16,9 @@ export const TextBlock:FC<TextBlockProps> = ({title, children}) => {
           </h2>:
         <></>
       }
-      <p className="text-block__text">
+      <div className="text-block__text">
         {children}
-      </p>
+      </div>
     </div>
   )
 }

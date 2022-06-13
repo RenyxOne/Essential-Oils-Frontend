@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 import './App.scss';
 import {MainPage} from "./pages/MainPage/MainPage";
 import {ItemPage} from "./pages/ItemPage/ItemPage";
@@ -15,6 +15,7 @@ function App() {
           <Route path="/" element={<MainPage/>}/>
           <Route path="/search/:value/:mode" element={<MainPage/>}/>
           <Route path="/item/:id" element={<ItemPage/>}/>
+          <Route path="*" element={<Navigate to="/"/>}/>
         </Routes>
       </Router>
     </div>

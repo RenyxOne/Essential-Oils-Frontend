@@ -5,7 +5,7 @@ export const Logo:FC = () => {
   return (
     <div className="logo">
       <h1>
-        AromaEbat
+        WrongTeamFormula
       </h1>
     </div>
   );

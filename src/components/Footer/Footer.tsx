@@ -7,6 +7,7 @@ export const Footer:FC = () => {
   <footer className="footer">
     <div className="footer__container">
       <Logo/>
+      <div className="footer__copyright">Amir Arina Vladislav Ekaterina Ruslan Sergey</div>
     </div>
   </footer>
   );

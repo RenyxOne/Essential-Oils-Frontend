@@ -19,7 +19,7 @@ export const Item:FC<ItemProps> = ({img, name, aroma, description, usage, benefi
         <ImageSmart src={img} className="item__image"/>
         <TextBlock title="Достоинства">
           <ul>
-            {benefits.map((item, index)=> (<li key={index}>{item}</li>))}
+            {benefits.map((item, index)=> (<li key={index}><p>{item}</p></li>))}
           </ul>
         </TextBlock>
       </div>
