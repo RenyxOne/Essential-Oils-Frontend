@@ -7,7 +7,8 @@ export const fetchInfo = async (value: string, mode: string) => {
 
   const url = value === "" || value === "empty" ?
     `${backend}/api/products/` :
-    `${backend}/api/products/search?q=${value}&type=${(Number)(mode!=="name")}`;
+    `${backend}/api/products/search?q=${value} &type=${(Number)(mode!=="name")}`;
+
 
   const response = await fetch(url,{
     mode: "cors",
@@ -50,12 +51,18 @@ export const fetchItem = async (id: string) => {
     name: json.name,
     aroma: json.aroma,
     description: json.description,
-    usage: json.usage,
-    benefits: json.benefits.split(';')
+    usage: json.usage.split(';').map((item: string) => {
+      const t = item.split(':');
+      return {
+        title: t[0],
+        text: t[1]
+      }
+    }),
+    benefits: json.benefits.split(';'),
+    warnings: json.warnings
   }
   return data;
 }
-
 
 export const fetchSimilarCards = async (id: string) => {
   const myHeader = new Headers();

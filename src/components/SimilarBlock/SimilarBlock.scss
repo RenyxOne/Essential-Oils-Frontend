@@ -6,7 +6,7 @@
   &__container{
     overflow: hidden;
     border-radius: 15px;
-    border: 1px solid $header-footer-color;
+    border: 1px solid $header-color;
     display: flex;
     flex-direction: column;
   }
@@ -15,6 +15,6 @@
     width: 100%;
     margin: 0;
     padding: 3px;
-    background-color: $header-footer-color;
+    background-color: $header-color;
   }
 }

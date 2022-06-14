@@ -1,13 +1,18 @@
 @import "../../brandbook/variables";
 
 .header {
+  z-index: 10000;
+  position: sticky;
+  top: 0;
   padding: 0 10px 10px 10px;
   width: 100%;
 
   &__container {
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 0 0 15px 15px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.35);
     padding: 0 10px;
-    background-color: $header-footer-color;
-    border-radius: 15px;
+    background-color: $header-color;
     width: 100%;
   }
 }

@@ -17,13 +17,13 @@ const loadInfo = async (id: string,
   setLoadItem(false);
 
   const cards = await fetchSimilarCards(id);
-  setCards(cards.slice(0, 5));
+  setCards(cards);
 }
 
 export const ItemPage:FC = () => {
   const params = useParams();
   const [loadItem, setLoadItem] = useState(false);
-  const [item, setItem] = useState({img: '', name: '', aroma: '', description: '', usage: '', benefits: []});
+  const [item, setItem] = useState({img: '', name: '', aroma: '', description: '', usage: [], benefits: [], warnings: ''});
   const [cards, setCards] = useState([] as Array<{id: number, img: string, name: string}>);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export const ItemPage:FC = () => {
         {loadItem ? <Load/> :
           (
             <>
-            <Item img={item.img} name={item.name} aroma={item.aroma} description={item.description} usage={item.usage} benefits={item.benefits}/>
+            <Item img={item.img} name={item.name} aroma={item.aroma} description={item.description} usage={item.usage} benefits={item.benefits} warnings={item.warnings}/>
             {
               cards.length ?
               <SimilarBlock cards={cards}/>:<></>

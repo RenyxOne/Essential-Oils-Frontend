@@ -8,11 +8,12 @@ type ItemProps = {
   name: string;
   aroma: string;
   description: string;
-  usage: string;
+  usage: Array<{title: string, text: string}>;
   benefits: string[];
+  warnings: string;
 }
 
-export const Item:FC<ItemProps> = ({img, name, aroma, description, usage, benefits}) => (
+export const Item:FC<ItemProps> = ({img, name, aroma, description, usage, benefits, warnings}) => (
   <div className="item">
     <div className="item__container">
       <div className="item__column">
@@ -34,8 +35,14 @@ export const Item:FC<ItemProps> = ({img, name, aroma, description, usage, benefi
           {description}
         </TextBlock>
         <TextBlock title="Применение">
-          {usage}
+          {usage.map((item, index) => <div key={index}><b>{item.title}:</b> {item.text}</div>)}
         </TextBlock>
+        {
+          warnings ?
+          <TextBlock title="Меры предосторожности">
+            {warnings}
+          </TextBlock> : <></>
+        }
       </div>
     </div>
   </div>
