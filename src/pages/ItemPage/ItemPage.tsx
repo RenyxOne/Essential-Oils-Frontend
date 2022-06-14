@@ -3,32 +3,48 @@ import {Header} from "../../components/Header/Header";
 import {Item} from "../../components/Item/Item";
 import {Footer} from "../../components/Footer/Footer";
 import {useParams} from "react-router-dom";
-import {fetchItem} from "../../services/fetchCards";
+import {fetchItem, fetchSimilarCards} from "../../services/fetchInfo";
 import {Load} from "../../components/Load/Load";
+import {SimilarBlock} from "../../components/SimilarBlock/SimilarBlock";
 
-const loadInfo = async (id: string, setLoad: React.Dispatch<any>, setItem:  React.Dispatch<any>) => {
-  setLoad(true);
+const loadInfo = async (id: string,
+                        setLoadItem: React.Dispatch<any>,
+                        setItem: React.Dispatch<any>,
+                        setCards: React.Dispatch<any>) => {
+  setLoadItem(true);
   const item = await fetchItem(id);
   setItem(item);
-  setLoad(false);
+  setLoadItem(false);
+
+  const cards = await fetchSimilarCards(id);
+  setCards(cards.slice(0, 5));
 }
 
 export const ItemPage:FC = () => {
   const params = useParams();
-  const [load, setLoad] = useState(false);
+  const [loadItem, setLoadItem] = useState(false);
   const [item, setItem] = useState({img: '', name: '', aroma: '', description: '', usage: '', benefits: []});
+  const [cards, setCards] = useState([] as Array<{id: number, img: string, name: string}>);
 
   useEffect(() => {
     if (params.id)
-      loadInfo(params.id, setLoad, setItem);
+      loadInfo(params.id, setLoadItem, setItem, setCards);
   }, [params]);
-
 
   return (
     <>
       <Header/>
       <main>
-        {load ? <Load/> : <Item img={item.img} name={item.name} aroma={item.aroma} description={item.description} usage={item.usage} benefits={item.benefits}/>}
+        {loadItem ? <Load/> :
+          (
+            <>
+            <Item img={item.img} name={item.name} aroma={item.aroma} description={item.description} usage={item.usage} benefits={item.benefits}/>
+            {
+              cards.length ?
+              <SimilarBlock cards={cards}/>:<></>
+            }
+            </>
+          )}
       </main>
       <Footer/>
     </>

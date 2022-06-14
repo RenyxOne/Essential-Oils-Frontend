@@ -5,7 +5,8 @@ export const Logo:FC = () => {
   return (
     <div className="logo">
       <h1>
-        WrongTeamFormula
+        {"{что-то} и точка"}
+        {/*WrongTeamFormula*/}
       </h1>
     </div>
   );

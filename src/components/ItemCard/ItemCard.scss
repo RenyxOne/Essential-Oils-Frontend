@@ -37,4 +37,12 @@
     justify-content: center;
     align-items: center;
   }
+
+  &#{&}--small {
+    .item-card {
+      &__image {
+        height: 100px;
+      }
+    }
+  }
 }

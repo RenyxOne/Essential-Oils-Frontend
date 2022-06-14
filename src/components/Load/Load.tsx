@@ -3,5 +3,5 @@ import "./Load.scss"
 
 export const Load:FC = () =>
   <div className="load">
-    <div className="load__text">Loading...</div>
+    <div className="load__text">Загрузка...</div>
   </div>

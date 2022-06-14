@@ -1,0 +1,20 @@
+@import "../../brandbook/variables";
+
+.similar-block{
+  padding: 10px;
+  width: 100%;
+  &__container{
+    overflow: hidden;
+    border-radius: 15px;
+    border: 1px solid $header-footer-color;
+    display: flex;
+    flex-direction: column;
+  }
+  &__title {
+    color: $font-color;
+    width: 100%;
+    margin: 0;
+    padding: 3px;
+    background-color: $header-footer-color;
+  }
+}

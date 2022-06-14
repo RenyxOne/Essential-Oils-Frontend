@@ -4,13 +4,13 @@ import {Footer} from "../../components/Footer/Footer";
 import {CardArea} from "../../components/CardArea/CardArea";
 import {ItemCard} from "../../components/ItemCard/ItemCard";
 import {Link, useParams} from "react-router-dom";
-import {fetchCards} from "../../services/fetchCards";
+import {fetchInfo} from "../../services/fetchInfo";
 import {Load} from "../../components/Load/Load";
 import {NoMatches} from "../../components/NoMatches/NoMatches";
 
 const loadCards = async (value: string, mode: string, setLoad: React.Dispatch<any>, setData: React.Dispatch<any>) => {
   setLoad(true);
-  const item = await fetchCards(value, mode);
+  const item = await fetchInfo(value, mode);
   setData(item);
   setLoad(false);
 }
@@ -34,7 +34,7 @@ export const MainPage:FC = () => {
         (arr.length > 0 ? (
               <CardArea>
               {
-                arr.map((item, index) => <Link to={`/item/${item.id}`} key={index}><ItemCard image={item.image} title={item.title} /></Link>)
+                arr.map((item, index) => <Link to={`/item/${item.id}`} key={index}><ItemCard image={item.image} title={item.title} type='big'/></Link>)
               }
               </CardArea>
             ) :
