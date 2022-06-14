@@ -1,4 +1,4 @@
-import {backend} from "../BackendUrl";
+import {backend} from "../BackendIP";
 
 export const fetchInfo = async (value: string, mode: string) => {
   const myHeader = new Headers();
@@ -6,8 +6,8 @@ export const fetchInfo = async (value: string, mode: string) => {
   myHeader.append('Content-Type', 'application/json');
 
   const url = value === "" || value === "empty" ?
-    `${backend}/api/products/` :
-    `${backend}/api/products/search?q=${value} &type=${(Number)(mode!=="name")}`;
+    `http://${backend}/api/products/` :
+    `http://${backend}/api/products/search?q=${value} &type=${(Number)(mode!=="name")}`;
 
 
   const response = await fetch(url,{
@@ -34,7 +34,7 @@ export const fetchItem = async (id: string) => {
   myHeader.append('Access-Control-Allow-Origin', '*');
   myHeader.append('Content-Type', 'application/json');
 
-  const url = `${backend}/api/products/${id}`;
+  const url = `http://${backend}/api/products/${id}`;
 
   const response = await fetch(url,{
     mode: "no-cors",
@@ -69,7 +69,7 @@ export const fetchSimilarCards = async (id: string) => {
   myHeader.append('Access-Control-Allow-Origin', '*');
   myHeader.append('Content-Type', 'application/json');
 
-  const url = `${backend}/api/products/${id}/similar`;
+  const url = `http://${backend}/api/products/${id}/similar`;
 
   const response = await fetch(url,{
     mode: "no-cors",
