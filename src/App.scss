@@ -1,12 +1,14 @@
 @import "./brandbook/variables";
 
 .wrapper {
+  position: relative;
   min-height: 100vh;
   text-align: center;
   background-color: $main-color;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 85px;
 }
 
 a {

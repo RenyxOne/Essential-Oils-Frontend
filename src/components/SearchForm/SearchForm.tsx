@@ -30,7 +30,7 @@ export const SearchForm: FC<SeachFormProps> = ({}) => {
           type="search"
           id="site-search"
           name="q"
-          placeholder="Your search input"
+          placeholder="Начните вводить"
           className="search-form__input"
           onChange={handleValChange}
           maxLength={50}
@@ -38,9 +38,9 @@ export const SearchForm: FC<SeachFormProps> = ({}) => {
         />
         <div className="search-form__additions">
           <div className="search-form__search-by">
-            <span>search by </span>
-            <ActiveButton name="name" isActive={mode==='name'} handleClick={() => {setMode('name')}}/>
-            <ActiveButton name="keywords" isActive={mode==='keywords'} handleClick={() => {setMode('keywords')}}/>
+            <span>Поиск по</span>
+            <ActiveButton name="Названию" isActive={mode==='name'} handleClick={() => {setMode('name')}}/>
+            <ActiveButton name="Ключевым словам" isActive={mode==='keywords'} handleClick={() => {setMode('keywords')}}/>
           </div>
           <Link to={`/search/${val}/${mode}`}>
             <button
@@ -48,7 +48,7 @@ export const SearchForm: FC<SeachFormProps> = ({}) => {
               className="search-form__button"
               disabled={val === ""}
             >
-              Search
+              Поиск
             </button>
           </Link>
         </div>
