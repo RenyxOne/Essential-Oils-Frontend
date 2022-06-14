@@ -17,9 +17,7 @@
     width: 50%;
     display: flex;
     flex-direction: column;
-    &:nth-last-child(2n) {
-      padding-right: 10%;
-    }
+    padding-right: 3%;
   }
   &__name {
     color: $font-color;

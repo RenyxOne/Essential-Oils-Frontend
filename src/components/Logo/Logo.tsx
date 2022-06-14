@@ -6,7 +6,6 @@ export const Logo:FC = () => {
     <div className="logo">
       <h1>
         {"{*что-то*} и точка"}
-        {/*WrongTeamFormula*/}
       </h1>
     </div>
   );
